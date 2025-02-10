@@ -16,13 +16,13 @@ __S2__ is optional, see notes on Serial, below
 ### Serial
 UART pins and power, intended for initial flashing the device and diagnostic monitoring using a BT module. When using a Bluetooth serial monitor, JP2 should be on, to supply it with power. Note that the pin labels are to match those on the serial device, rather than being those of the ESP8622.  3.3V logic must be used.
 
-Note that, if the DTR and RTS signals are connected, then the PlatformIO monitor (or any other serial interaction which is not bootloading) must be configured as follows (add to platformio.ini), otherwise attempts to use the Monitor cause the board to hang (recovers if the monitor is killed):
+Note that, if the DTR and RTS signals are connected (and D2 installed), then the PlatformIO monitor (or any other serial interaction which is not bootloading) must be configured as follows (add to platformio.ini), otherwise attempts to use the Monitor cause the board to hang (recovers if the monitor is killed):
 ```
 monitor_rts = 0
 monitor_dtr = 0
 ```
 
-If DTR is not available on the USB/Serial adapter, install S2 and R19. Cut through SJ2 and SJ3 for manual boot-loader trigger.
+If DTR is not available on the USB/Serial adapter, install S2 and R16 and cut through SJ1 and SJ2 for manual boot-loader trigger.
 __S2__ (Flash) -  Reset will trigger the boot loader if this switch is held on (i.e. flashing is done by holding S2 and then pressing/releasing S1). Once the new programme has been flashed, S1 (reset) must be done manually.
 
 ## Off-board "Thermo" Relay
